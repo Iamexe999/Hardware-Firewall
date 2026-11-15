@@ -136,12 +136,6 @@ On macOS, replace `make` with `gmake`. Override Verilator if needed: `make VERIL
 
 In GTKWave, add `clk`, `s_awvalid`, `s_awready`, `s_wvalid`, `s_wready`, `m_awvalid`, `m_wvalid`, `s_bvalid`, `s_bresp`, and `violation_count`. The opening transaction is denied: watch DECERR and the counter increment without a downstream write. A transfer occurs on a rising edge where VALID and READY are both high.
 
-## Updating only these files
-
-If you already have the original project, replace the root `README.md` with this file and replace `sim/test_firewall.cpp` with the accompanying refactored file. Keep the RTL and Makefile. Then run `make test` (or `gmake test` on macOS); Make will rebuild the changed C++ source.
-
-The refactored testbench names the AXI state explicitly, separates clock driving from peripheral bookkeeping, groups directed tests by purpose, and stores timing options in `TransactionTiming`. Random timing draws have an explicit order so argument-evaluation differences do not change them between compilers.
-
 ## Troubleshooting
 
 | Symptom | Action |
